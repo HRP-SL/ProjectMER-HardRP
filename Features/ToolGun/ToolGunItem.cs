@@ -43,7 +43,7 @@ public class ToolGunItem
 		set
 		{
 			_selectedObjectToSpawn = value;
-			if (TypesDictionary.Count <= (int)_selectedObjectToSpawn)
+			if (TypesDictionary.Count - 1 <= (int)_selectedObjectToSpawn)
 			{
 				_selectedObjectToSpawn = 0;
 				return;
@@ -51,7 +51,7 @@ public class ToolGunItem
 
 			if (_selectedObjectToSpawn < 0)
 			{
-				_selectedObjectToSpawn = (ToolGunObjectType)(TypesDictionary.Count - 1);
+				_selectedObjectToSpawn = (ToolGunObjectType)(TypesDictionary.Count - 2);
 				return;
 			}
 		}
@@ -81,14 +81,14 @@ public class ToolGunItem
 
 		ItemDictionary.Add(toolgun.ItemSerial, new ToolGunItem(toolgun));
 
-		ServerSpecificSettingsSync.SendOnJoinFilter = (_) => false; // Prevent all users from receiving the tools after joining the server.
-		ServerSpecificSettingsSync.DefinedSettings =
-		[
-			new SSGroupHeader("MapEditorReborn"),
-			new SSDropdownSetting(0, "Schematic Name", MapUtils.GetAvailableSchematicNames(), isServerOnly: true)
-		];
-
-		ServerSpecificSettingsSync.SendToPlayersConditionally(x => x.inventory.UserInventory.Items.Values.Any(x => x.IsToolGun(out ToolGunItem _)));
+		// ServerSpecificSettingsSync.SendOnJoinFilter = (_) => false; // Prevent all users from receiving the tools after joining the server.
+		// ServerSpecificSettingsSync.DefinedSettings =
+		// [
+		// 	new SSGroupHeader("MapEditorReborn"),
+		// 	new SSDropdownSetting(0, "Schematic Name", MapUtils.GetAvailableSchematicNames(), isServerOnly: true)
+		// ];
+		//
+		// ServerSpecificSettingsSync.SendToPlayersConditionally(x => x.inventory.UserInventory.Items.Values.Any(x => x.IsToolGun(out ToolGunItem _)));
 
 		return true;
 	}
@@ -116,9 +116,9 @@ public class ToolGunItem
 	{
 		if (CreateMode)
 		{
-			ServerSpecificSettingsSync.TryGetSettingOfUser(player.ReferenceHub, 0, out SSDropdownSetting dropdownSetting);
-			dropdownSetting.TryGetSyncSelectionText(out string schematicName);
-
+			// ServerSpecificSettingsSync.TryGetSettingOfUser(player.ReferenceHub, 0, out SSDropdownSetting dropdownSetting);
+			// dropdownSetting.TryGetSyncSelectionText(out string schematicName);
+			var schematicName = string.Empty;
 			ToolGunHandler.CreateObject(player, SelectedObjectToSpawn, schematicName);
 			return;
 		}

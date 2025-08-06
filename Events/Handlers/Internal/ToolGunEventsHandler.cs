@@ -69,6 +69,11 @@ public class ToolGunEventsHandler : CustomEventsHandler
 			return;
 
 		ev.IsAllowed = false;
+		if (!ev.Throw)
+		{
+			ToolGunItem.Remove(ev.Player);
+			return;
+		}
 		toolGun.SelectedObjectToSpawn++;
 	}
 }

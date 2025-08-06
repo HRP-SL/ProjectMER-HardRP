@@ -2,6 +2,7 @@ global using Logger = LabApi.Features.Console.Logger;
 
 using HarmonyLib;
 using LabApi.Events.CustomHandlers;
+using LabApi.Features.Wrappers;
 using LabApi.Loader.Features.Paths;
 using LabApi.Loader.Features.Plugins;
 using MEC;
@@ -47,7 +48,7 @@ public class ProjectMER : Plugin<Config>
 		_harmony = new Harmony($"michal78900.mapEditorReborn-{DateTime.Now.Ticks}");
 		_harmony.PatchAll();
 
-		PluginDir = Path.Combine(PathManager.Configs.FullName, "ProjectMER");
+		PluginDir = Path.Combine(PathManager.Configs.FullName, $"ProjectMER-{Server.Port}");
 		MapsDir = Path.Combine(PluginDir, "Maps");
 		SchematicsDir = Path.Combine(PluginDir, "Schematics");
 
