@@ -18,6 +18,9 @@
     <Reference Include="CommandSystem.Core">
       <HintPath>..\..\..\..\..\..\need sus\CommandSystem.Core.dll</HintPath>
     </Reference>
+    <Reference Include="HintsCore-LabAPI">
+      <HintPath>..\..\..\..\..\..\need sus\HintsCore-LabAPI.dll</HintPath>
+    </Reference>
     <Reference Include="LabApi" HintPath="$(SL_REFERENCES)\LabApi.dll" />
     <Reference Include="Mirror">
       <HintPath>..\..\..\..\..\..\need sus\Mirror.dll</HintPath>
