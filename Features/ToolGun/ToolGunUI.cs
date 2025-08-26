@@ -29,11 +29,11 @@ public static class ToolGunUI
 			offset = properties.Count - properties.Count(x => Attribute.IsDefined(x, typeof(YamlIgnoreAttribute))) + 2 + 2;
 		}
 
-		for (int i = 0; i < 36 - offset; i++)
-		{
-			sb.Append("<size=50%> </size>");
-			sb.AppendLine();
-		}
+		// for (int i = 0; i < 36 - offset; i++)
+		// {
+		// 	sb.Append("<size=50%> </size>");
+		// 	sb.AppendLine();
+		// }
 
 		if (mapEditorObject != null)
 		{
@@ -95,7 +95,7 @@ public static class ToolGunUI
 				output = toolGun.SelectedObjectToSpawn.ToString().ToUpper();
 			}
 
-			return $"<color=green>CREATE</color>\n<color=yellow>{output}</color>";
+			return $"<color=green>CREATE</color>\n<color=yellow><size=50%>{output}</size></color>";
 		}
 
 		string name = " ";
@@ -118,10 +118,10 @@ public static class ToolGunUI
 		}
 
 		if (toolGun.DeleteMode)
-			return $"<color=red>DELETE</color>\n<color=yellow>{name}</color>";
+			return $"<color=red>DELETE</color>\n<color=yellow><size=50%>{name}</size></color>";
 
 		if (toolGun.SelectMode)
-			return $"<color=yellow>SELECT</color>\n<color=yellow>{name}</color>";
+			return $"<color=yellow>SELECT</color>\n<color=yellow><size=50%>{name}</size></color>";
 
 		return "\n ";
 	}

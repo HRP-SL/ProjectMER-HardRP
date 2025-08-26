@@ -1,4 +1,5 @@
 using HintsCore;
+using HintsCore.Utils;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features.Wrappers;
@@ -23,7 +24,7 @@ public class ToolGunEventsHandler : CustomEventsHandler
 	private static void SendUI(Player player, string text, float duration)
 	{
 		PlayerDisplay display = PlayerDisplay.Get(player);
-		DisplayBlock block = new DisplayBlock(new (0, -540), new (Constants.CanvasSafeWidth, Constants.CanvasSafeHeight));
+		DisplayBlock block = new DisplayBlock(new (0, -530), new (Constants.CanvasSafeWidth, Constants.CanvasSafeHeight), newFromTop: false);
 		MessageBlock message = new MessageBlock(text, Color.white);
 		block.Contents.Add(message);
 		display.AddBlock(block);
